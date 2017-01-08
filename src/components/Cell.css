@@ -1,0 +1,12 @@
+.square {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border: 1px solid white;
+  float: left;
+  box-sizing: border-box;
+}
+
+.square.alive {
+  background-color: green;
+}
