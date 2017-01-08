@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Grid from './Grid.js';
-import Button from './Button.js'
+import GameOfLifeGrid from '../containers/GameOfLifeGrid'
+import Grid from './Grid';
+import Button from './Button'
 
 class App extends Component {
   beginGame(){
@@ -12,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Grid/>
+        <GameOfLifeGrid />
         <Button handleClick={this.beginGame} />
       </div>
     );

@@ -1,17 +1,22 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react'
 import './Cell.css';
 import classNames from 'classnames';
 
-class Cell extends Component {
-  render() {
-    var status = classNames('square', { alive: this.props.isAlive });
+let determineColor = (isAlive) => {
+  return classNames('square', { alive: isAlive })
+}
 
-    return (
-      <div className={status}
-          onClick={ () => alert(this.props.index) }
-        ></div>
-    );
-  }
+const Cell = ({ onClick, isAlive, size }) => (
+  <div
+    style={{width: size , height: size }}
+    onClick={onClick}
+    className={determineColor(isAlive)}
+  />
+)
+
+Cell.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  isAlive: PropTypes.bool.isRequired
 }
 
 export default Cell;
