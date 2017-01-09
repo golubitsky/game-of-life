@@ -12,7 +12,7 @@ const Header = () => (
           Conway's Game of Life
       </a>
     </h2>
-    <span>First populate life by clicking some cells. Then click the button.</span>
+    <span>First populate life by clicking some cells. Then click the button. Life goes on according to the rules linked above.</span>
   </div>
 )
 
