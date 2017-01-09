@@ -17,9 +17,16 @@ class GridModel {
     }.bind(this));
   }
 
-  _gridWidth(grid){
-    return Math.sqrt(grid.length);
+  createLife(grid, index){
+    return grid.map(function(isAlive, cellIndex){
+      if (cellIndex === index){
+        return true;
+      }
+
+      return isAlive;
+    });
   }
+
   fillGrid(grid){
     var gridWidth = this._gridWidth(grid);
     var gridSize = grid.length;
@@ -39,7 +46,7 @@ class GridModel {
     var gridCopy = grid.slice(); 
     startingCellPattern.forEach(function(cellIndex) {
       gridCopy[cellIndex] = !gridCopy[cellIndex];
-    }.bind(this));
+    });
 
     return gridCopy;
   }
@@ -57,7 +64,7 @@ class GridModel {
       var neighborIndex = cellIndex + offset(grid);
       
       return grid[neighborIndex];
-    }.bind(this)).length
+    }).length
   }
 
   _offsets(){
@@ -81,6 +88,10 @@ class GridModel {
   _downLeft =   (grid) => this._gridWidth(grid) - 1;
   _left =       (grid) => -1;
   _upLeft =     (grid) => -this._gridWidth(grid) - 1;
+
+  _gridWidth(grid){
+    return Math.sqrt(grid.length);
+  }
 }
 
 export default GridModel;

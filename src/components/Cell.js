@@ -6,10 +6,10 @@ let determineColor = (isAlive) => {
   return classNames('square', { alive: isAlive })
 }
 
-const Cell = ({ onClick, isAlive, size }) => (
+const Cell = ({ onClick, isAlive, displaySize }) => (
   <div
-    style={{width: size , height: size }}
-    onClick={onClick}
+    style={{width: displaySize , height: displaySize }}
+    onClick={() => onClick()}
     className={determineColor(isAlive)}
   />
 )

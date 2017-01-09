@@ -3,27 +3,15 @@ import { takeNextStep } from '../actions'
 import Button from '../components/Button'
 
 const mapStateToProps = (state, ownProps) => ({
-  grid: state.grid
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  dispatch
+  onClick: () => dispatch(takeNextStep())
 })
-
-function mergeProps(stateProps, dispatchProps, ownProps) {
-  const { grid } = stateProps;
-  const { dispatch } = dispatchProps;
-
-  return {
-    ...ownProps,
-    onClick: () => dispatch(takeNextStep(grid))
-  };
-}
 
 const InitializePatternButton = connect(
   mapStateToProps,
-  mapDispatchToProps,
-  mergeProps
+  mapDispatchToProps
 )(Button)
 
 export default InitializePatternButton

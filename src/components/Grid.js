@@ -20,7 +20,7 @@ const Grid = ({ grid, onCellClick }) => (
     {grid.map((isAlive, cellIndex) =>
       <Cell 
         key={cellIndex.toString()} 
-        size={cellSizePixels}
+        displaySize={cellSizePixels}
         isAlive={isAlive}
         onClick={() => onCellClick(cellIndex)}
       />

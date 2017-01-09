@@ -1,9 +1,14 @@
-export const takeNextStep = (grid) => ({
-  type: 'STEP',
-  grid
+export const takeNextStep = () => ({
+  type: 'STEP'
 })
 
-export const initializeCells = (grid) => ({
-  type: 'INITIALIZE_CELLS',
-  grid
+// currently not used, 
+// possibly use later to initialize specific patterns 
+export const initializeCells = () => ({
+  type: 'INITIALIZE_CELLS'
+})
+
+export const createLife = (cellIndex) => ({
+  type: 'CREATE_LIFE',
+  cellIndex
 })

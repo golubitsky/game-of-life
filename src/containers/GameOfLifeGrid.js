@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { initializeCells, takeNextStep } from '../actions'
+import { createLife } from '../actions'
 import Grid from '../components/Grid'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -7,8 +7,8 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  onCellClick: () => {
-    dispatch(initializeCells())
+  onCellClick: (cellIndex) => {
+    dispatch(createLife(cellIndex))
   }
 })
 

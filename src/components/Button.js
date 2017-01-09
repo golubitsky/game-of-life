@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Button = ({ grid, onClick }) => (
+const Button = ({ onClick }) => (
   <button
-    onClick={() => onClick(grid)}
+    onClick={() => onClick()}
   >Click me
   </button>
 )
