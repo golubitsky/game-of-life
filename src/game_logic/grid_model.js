@@ -1,3 +1,5 @@
+import { shuffleArray } from './../utilities.js'
+
 class GridModel {
   constructor(gridWidth) {
     // stores a square grid having user-provided gridWidth as a
@@ -25,6 +27,16 @@ class GridModel {
 
       return isAlive;
     });
+  }
+
+  fillGridRandom(grid, percentageFromZeroToHundred){
+    let cellCount = grid.length;
+    var pct = percentageFromZeroToHundred / 100;
+    let numberCellToFill = Math.floor(cellCount * pct)
+
+    var randomGrid = grid.map((key, index) => index < numberCellToFill);
+    var shuffled = shuffleArray(randomGrid);
+    return shuffled;
   }
 
   fillGrid(grid){

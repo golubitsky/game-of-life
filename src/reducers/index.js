@@ -1,4 +1,4 @@
-import GridModel from './game_logic/grid_model'
+import GridModel from './../game_logic/grid_model'
 
 const gridModel = new GridModel(40);
 
@@ -9,10 +9,10 @@ export default (state = { grid: gridModel.grid, isRunning: false, interval: null
         ...state,
         grid: gridModel.createLife(state.grid, action.cellIndex)
       }
-    case 'INITIALIZE_CELLS':
+    case 'INITIALIZE_RANDOM':
       return {
         ...state,
-        grid: gridModel.fillGrid(state.grid)
+        grid: gridModel.fillGridRandom(state.grid, action.percentage)
       }
     case 'STEP':
       return {
