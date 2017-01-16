@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { createLife } from '../actions'
+import { toggleCell } from '../actions'
 import Grid from '../components/Grid'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onCellClick: (cellIndex) => {
-    dispatch(createLife(cellIndex))
+    dispatch(toggleCell(cellIndex))
   }
 })
 

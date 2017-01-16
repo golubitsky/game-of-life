@@ -19,10 +19,11 @@ class GridModel {
     }.bind(this));
   }
 
-  createLife(grid, index){
+  toggleCell(grid, index){
+    console.log(index)
     return grid.map(function(isAlive, cellIndex){
       if (cellIndex === index){
-        return true;
+        return !isAlive;
       }
 
       return isAlive;

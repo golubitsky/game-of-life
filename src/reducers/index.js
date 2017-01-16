@@ -4,10 +4,10 @@ const gridModel = new GridModel(40);
 
 export default (state = { grid: gridModel.grid, isRunning: false, interval: null }, action) => {
   switch (action.type) {
-    case 'CREATE_LIFE':
+    case 'TOGGLE_CELL':
       return {
         ...state,
-        grid: gridModel.createLife(state.grid, action.cellIndex)
+        grid: gridModel.toggleCell(state.grid, action.cellIndex)
       }
     case 'INITIALIZE_RANDOM':
       return {

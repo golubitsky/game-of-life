@@ -7,8 +7,8 @@ export const initializeRandom = (percentage) => ({
   percentage
 })
 
-export const createLife = (cellIndex) => ({
-  type: 'CREATE_LIFE',
+export const toggleCell = (cellIndex) => ({
+  type: 'TOGGLE_CELL',
   cellIndex
 })
 
