@@ -3,7 +3,7 @@ require('rc-slider/assets/index.css');
 var React = require('react');
 var SliderComp = require('rc-slider');
 
-const Slider = ({ onChange, min, max, value }) => (
+const Slider = ({ onChange, min, max }) => (
   <SliderComp 
     style={
       {
@@ -12,7 +12,6 @@ const Slider = ({ onChange, min, max, value }) => (
     }
     min={ min }
     max={ max }
-    value={ value }
     onChange={ onChange }
   />
 )

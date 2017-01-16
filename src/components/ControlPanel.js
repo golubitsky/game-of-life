@@ -8,7 +8,7 @@ const ControlPanel = ({ onClick, buttonText }) => (
     <InitializePatternButton />
     <p>RandomSeeder (%)</p>
     <RandomDistributionSlider />
-    <p>Toroidal (on/off)</p>
+    <p>Toroidal Grid (on/off)</p>
     <ToroidalToggle />
   </div>
 )

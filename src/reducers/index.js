@@ -5,7 +5,7 @@ const gridModel = new GridModel(40);
 let initialState = { 
   grid: gridModel.grid, 
   isRunning: false,
-  isToroidal: true,
+  isToroidal: false,
   interval: null 
 }
 
