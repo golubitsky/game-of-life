@@ -2,13 +2,25 @@ import GridModel from './../game_logic/grid_model'
 
 const gridModel = new GridModel(40);
 
-export default (state = { grid: gridModel.grid, isRunning: false, interval: null }, action) => {
+let initialState = { 
+  grid: gridModel.grid, 
+  isRunning: false,
+  isToroidal: true,
+  interval: null 
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'TOGGLE_CELL':
       return {
         ...state,
         grid: gridModel.toggleCell(state.grid, action.cellIndex)
       }
+    case 'TOGGLE_TOROIDAL':
+      return {
+        ...state,
+        isToroidal: !state.isToroidal
+      } 
     case 'INITIALIZE_RANDOM':
       return {
         ...state,
@@ -17,12 +29,12 @@ export default (state = { grid: gridModel.grid, isRunning: false, interval: null
     case 'STEP':
       return {
         ...state,
-        grid: gridModel.getNextState(state.grid)
+        grid: gridModel.getNextState(state.grid, state.isToroidal)
       }
     case 'START_GAME':
       return {
         ...state,
-        grid: gridModel.getNextState(state.grid),
+        grid: gridModel.getNextState(state.grid, state.isToroidal),
         interval: action.interval,
         isRunning: true
       }

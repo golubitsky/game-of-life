@@ -7,6 +7,10 @@ export const initializeRandom = (percentage) => ({
   percentage
 })
 
+export const toggleToroidal = () => ({
+  type: 'TOGGLE_TOROIDAL'
+})
+
 export const toggleCell = (cellIndex) => ({
   type: 'TOGGLE_CELL',
   cellIndex
