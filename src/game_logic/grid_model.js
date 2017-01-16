@@ -1,5 +1,6 @@
 import { shuffleArray } from './../utilities.js'
-
+import neighborIndices from './NeighborService.js';
+ 
 class GridModel {
   constructor(gridWidth) {
     // stores a square grid having user-provided gridWidth as a
@@ -8,19 +9,19 @@ class GridModel {
     this.gridWidth = this.grid.length / gridWidth;
   }
 
-  getNextState(grid){
+  getNextState(grid, toroidal){
     // determines the next state according to the rules of the game:
     // https://en.wikipedia.org/wiki/Conway's_Game_of_Life#Origins
 
     return grid.map(function(isAlive, cellIndex){
-      var neighborCount = this._countNeighbors(grid, cellIndex);
+      var neighborIndexes = neighborIndices(cellIndex, grid, toroidal)
+      var neighborCount = this._countNeighbors(grid, neighborIndexes);
 
       return this._willBeAlive(isAlive, neighborCount);
     }.bind(this));
   }
 
   toggleCell(grid, index){
-    console.log(index)
     return grid.map(function(isAlive, cellIndex){
       if (cellIndex === index){
         return !isAlive;
@@ -72,35 +73,9 @@ class GridModel {
     }
   }
 
-  _countNeighbors(grid, cellIndex) {
-    return this._offsets(grid).filter(function (offset) {
-      var neighborIndex = cellIndex + offset(grid);
-      
-      return grid[neighborIndex];
-    }).length
+  _countNeighbors(grid, neighborIndexes) {
+    return neighborIndexes.filter((index) => grid[index]).length
   }
-
-  _offsets(){
-    return [
-      this._up, 
-      this._upRight, 
-      this._right, 
-      this._downRight, 
-      this._down, 
-      this._downLeft, 
-      this._left, 
-      this._upLeft
-    ];
-  }
-  // functions to traverse from a given index in the grid
-  _up =         (grid) => -this._gridWidth(grid);
-  _upRight =    (grid) => -this._gridWidth(grid) + 1;
-  _right =      (grid) => 1;
-  _downRight =  (grid) => this._gridWidth(grid) + 1;
-  _down =       (grid) => this._gridWidth(grid);
-  _downLeft =   (grid) => this._gridWidth(grid) - 1;
-  _left =       (grid) => -1;
-  _upLeft =     (grid) => -this._gridWidth(grid) - 1;
 
   _gridWidth(grid){
     return Math.sqrt(grid.length);
