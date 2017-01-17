@@ -6,7 +6,8 @@ let initialState = {
   grid: gridModel.grid, 
   isRunning: false,
   isToroidal: false,
-  interval: null 
+  interval: null,
+  cellCountHistory: []
 }
 
 export default (state = initialState, action) => {
@@ -27,9 +28,15 @@ export default (state = initialState, action) => {
         grid: gridModel.fillGridRandom(state.grid, action.percentage)
       }
     case 'STEP':
+      let grid = gridModel.getNextState(state.grid, state.isToroidal);
+      let cellCount = grid.filter(x => x).length;
       return {
         ...state,
-        grid: gridModel.getNextState(state.grid, state.isToroidal)
+        grid: grid,
+        cellCountHistory: state.cellCountHistory.concat({
+          index: state.cellCountHistory.length,
+          cellCount: cellCount
+        })
       }
     case 'START_GAME':
       return {

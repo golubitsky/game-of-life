@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
-import Display from '../components/Display'
+import Chart from '../components/Chart'
 
 const mapStateToProps = (state, ownProps) => ({
-  value: state.cellCountHistory.slice(-1)[0].cellCount
+  chartData: state.cellCountHistory
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
-const StatusDisplay = connect(
+const CellCountChart = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Display)
+)(Chart)
 
-export default StatusDisplay
+export default CellCountChart

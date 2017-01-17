@@ -9,6 +9,7 @@
     "classnames": "^2.2.5",
     "rc-slider": "^5.4.3",
     "react": "^15.4.2",
+    "react-d3-basic": "^1.6.11",
     "react-dom": "^15.4.2",
     "react-input-slider": "^1.6.0",
     "react-redux": "^5.0.1",
