@@ -39,10 +39,10 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
   };
 }
 
-const InitializePatternButton = connect(
+const StartStopButton = connect(
   mapStateToProps,
   mapDispatchToProps,
   mergeProps
 )(Button)
 
-export default InitializePatternButton
+export default StartStopButton
